@@ -488,46 +488,40 @@
             });
         </script>
 
-    <button onclick="vapiInstance?.start()"
-            class="fixed bottom-6 right-6 bg-amber-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-amber-700 transition z-50 flex items-center space-x-2 text-lg font-semibold">
-      <span>Necesitas apoyo? Iniciar conversación</span>
-      <span>🎙️</span>
-    </button>
-
-
     <script>
-  var vapiInstance = null; // Variable para almacenar la instancia de Vapi
-  const assistant = "a3a7dbeb-e78a-4d8c-ba49-202b3c0b0263"; // TU ASSISTANT ID
-  const apiKey = "8a1de061-38f4-4395-8331-1b548fbcf374"; // TU PUBLIC API KEY
-  
-  // CONFIGURACIÓN PARA PERSONALIZAR EL BOTÓN POR DEFECTO DE Vapi
-  const buttonConfig = {
-      showVapiButton: true, // Ahora lo mostramos
-      position: 'bottom-right', // Donde quieres que aparezca
-      size: 'large', // Un tamaño más grande
-      color: '#FF8C00', // Tu color ámbar
-      offset: '24px', // Similar a tu botón, 24px del borde
-      label: 'Necesitas apoyo? Iniciar conversación', // Tu texto personalizado
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.2-3c0 2.88-2.52 5.2-5.2 5.2S6.8 13.88 6.8 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.8z"/></svg>' // Un icono de micrófono simple (SVG)
-  };
+      var vapiInstance = null; // Variable para almacenar la instancia de Vapi
+      const assistant = "a3a7dbeb-e78a-4d8c-ba49-202b3c0b0263"; // TU ASSISTANT ID
+      const apiKey = "8a1de061-38f4-4395-8331-1b548fbcf374"; // TU PUBLIC API KEY
+      
+      // CONFIGURACIÓN CLAVE: showVapiButton: true para mostrar el botón de Vapi
+      const buttonConfig = {
+          showVapiButton: true, // Ahora Vapi mostrará su propio botón flotante
+          position: 'bottom-right', // Posiciona el botón en la esquina inferior derecha
+          offset: '24px', // Similar al margen que tenías con tu botón (24px de los bordes)
+          color: '#FF8C00', // El color ámbar de tu marca
+          label: 'Necesitas apoyo? Iniciar conversación', // El texto que quieres en el botón
+          // Puedes personalizar el icono SVG si lo deseas, o dejar el predeterminado de Vapi.
+          // Por ejemplo, para un micrófono simple:
+          // icon: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.2-3c0 2.88-2.52 5.2-5.2 5.2S6.8 13.88 6.8 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.8z"/></svg>'
+      };
 
-  (function (d, t) {
-    var g = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-    g.defer = true;
-    g.async = true;
-    s.parentNode.insertBefore(g, s);
+      (function (d, t) {
+        var g = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
 
-    g.onload = function () {
-      vapiInstance = window.vapiSDK.run({
-        apiKey: apiKey, 
-        assistant: assistant, 
-        config: buttonConfig, // Usamos la configuración con las personalizaciones
-      });
-    };
-  })(document, "script");
-</script>
-    
+        g.onload = function () {
+          vapiInstance = window.vapiSDK.run({
+            apiKey: apiKey, 
+            assistant: assistant, 
+            config: buttonConfig, // Usamos la configuración con las personalizaciones del botón de Vapi
+          });
+        };
+      })(document, "script");
+    </script>
+
 </body>
 </html>
