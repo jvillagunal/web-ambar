@@ -489,20 +489,25 @@
     </script>
 
 <button onclick="vapiInstance?.start()"
-        class="fixed bottom-6 right-6 bg-amber-600 text-white p-4 rounded-full shadow-lg hover:bg-amber-700 transition z-50">
-  🎙️ Hablar con Asistente
+        class="fixed bottom-6 right-6 bg-amber-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-amber-700 transition z-50 flex items-center space-x-2 text-lg font-semibold">
+  <span>Necesitas apoyo? Iniciar conversación</span>
+  <span>🎙️</span>
 </button>
+
 
 <script>
   var vapiInstance = null; // Variable para almacenar la instancia de Vapi
   const assistant = "a3a7dbeb-e78a-4d8c-ba49-202b3c0b0263"; // TU ASSISTANT ID
   const apiKey = "8a1de061-38f4-4395-8331-1b548fbcf374"; // TU PUBLIC API KEY
-  const buttonConfig = {}; // Puedes dejarlo vacío por ahora
+  
+  // *** CONFIGURACIÓN PARA OCULTAR EL BOTÓN POR DEFECTO DE Vapi ***
+  const buttonConfig = {
+      showVapiButton: false // Con esto, Vapi NO mostrará su propio botón flotante
+  };
 
   (function (d, t) {
-    var g = document.createElement(t),
+    var g = d.createElement(t),
       s = d.getElementsByTagName(t)[0];
-    // Esta es la NUEVA URL del script de Vapi
     g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
     g.defer = true;
     g.async = true;
@@ -511,13 +516,10 @@
     g.onload = function () {
       // Aquí se inicializa el widget de Vapi y se guarda la instancia
       vapiInstance = window.vapiSDK.run({
-        apiKey: apiKey, // obligatorio
-        assistant: assistant, // obligatorio
-        config: buttonConfig, // opcional
+        apiKey: apiKey, 
+        assistant: assistant, 
+        config: buttonConfig, // Usamos la configuración para ocultar el botón de Vapi
       });
-
-      // Opcional: Si quieres que inicie automáticamente cuando esté listo (como tenías antes)
-      // vapiInstance.start(); // Descomenta esta línea si quieres inicio automático
     };
   })(document, "script");
 </script>
