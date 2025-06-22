@@ -502,33 +502,32 @@
 
 
     <script>
-      var vapiInstance = null; // Variable para almacenar la instancia de Vapi
-      const assistant = "a3a7dbeb-e78a-4d8c-ba49-202b3c0b0263"; // TU ASSISTANT ID
-      const apiKey = "8a1de061-38f4-4395-8331-1b548fbcf374"; // TU PUBLIC API KEY
-      
-      // MUY IMPORTANTE: showVapiButton: false para ocultar el botón por defecto de Vapi
-      // Ya que usaremos nuestro propio cuadro transparente con click
-      const buttonConfig = {
-          showVapiButton: false 
-      };
+  var vapiInstance = null;
+  const assistant = "e045705a-eebd-40eb-b18c-fc14925d4469"; // NUEVO ASSISTANT ID
+  const apiKey = "c1aaa8cc-79ea-4b53-bd9f-a29bdb956e27";    // NUEVA PUBLIC API KEY
 
-      (function (d, t) {
-        var g = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-        g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-        g.defer = true;
-        g.async = true;
-        s.parentNode.insertBefore(g, s);
+  const buttonConfig = {
+      showVapiButton: false 
+  };
 
-        g.onload = function () {
-          vapiInstance = window.vapiSDK.run({
-            apiKey: apiKey, 
-            assistant: assistant, 
-            config: buttonConfig, // Usamos la configuración para ocultar el botón de Vapi
-          });
-        };
-      })(document, "script");
-    </script>
+  (function (d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g, s);
+
+    g.onload = function () {
+      vapiInstance = window.vapiSDK.run({
+        apiKey: apiKey,
+        assistant: assistant,
+        config: buttonConfig
+      });
+    };
+  })(document, "script");
+</script>
+
 
 </body>
 </html>
