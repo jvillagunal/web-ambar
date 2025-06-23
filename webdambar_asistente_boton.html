@@ -3,531 +3,2037 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones ÁMBAR - Marketing, Publicidad y Diseño</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Soluciones ÁMBAR - Marketing y Publicidad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Variables y estilos base */
+        :root {
+            --ambar-primary: #E67E22;
+            --ambar-dark: #2C3E50;
+            --ambar-light: #F5F7FA;
+            --ambar-light-gray: #eef2f6;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5; /* Light grey background for a modern feel */
-            color: #333;
-        }
-        /* Custom scrollbar for a cleaner look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e0e0e0;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #a0a0a0;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #777;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
         }
 
-        /* Keyframe Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        /* Estilos del header */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
         }
 
-        .animate-fade-in-down {
-            animation: fadeInDown 1s ease-out forwards;
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        .animate-pulse-subtle {
-            animation: pulse 2s infinite ease-in-out;
-        }
-        .animate-slide-in-left {
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        .animate-slide-in-right {
-            animation: slideInRight 0.8s ease-out forwards;
+        .header.scrolled {
+            padding: 10px 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Specific styles for sections to add depth */
-        section {
-            padding: 5rem 0; /* Increased vertical padding for more spacious feel */
-            margin-bottom: 2.5rem; /* More space between sections */
-            border-radius: 1.5rem; /* More rounded corners for sections */
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); /* Stronger subtle shadow for depth */
-            overflow: hidden; /* Ensure content stays within rounded borders */
+        /* Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
-        /* Hero section specific background */
-        #home {
-            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 100%); /* Vibrant orange to gold gradient */
-            min-height: 80vh; /* Make hero section taller */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background-color: var(--ambar-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 22px;
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ambar-dark);
+        }
+
+        .logo-text span {
+            color: var(--ambar-primary);
+        }
+
+        /* Navegación desktop */
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 12px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ambar-dark);
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            padding: 8px 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--ambar-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--ambar-primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--ambar-primary);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Menú hamburguesa */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: var(--ambar-dark);
+            border-radius: 2px;
+            position: absolute;
+            left: 5px;
+            transition: var(--transition);
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 10px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 18px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 26px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 18px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 18px;
+            transform: rotate(-45deg);
+        }
+
+        /* Botón Vapi */
+        .vapi-button {
+            background-color: var(--ambar-primary);
+            color: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden; /* Hide any overflow from background elements */
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 1200;
+            margin-left: 0;
         }
-        #home::before {
+
+        .vapi-button:hover {
+            background-color: #d35400;
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        /* Menú móvil */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 100px 30px 30px;
+            transition: var(--transition);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 25px;
+        }
+
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--ambar-dark);
+            font-weight: 600;
+            font-size: 18px;
+            display: block;
+            padding: 8px 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--ambar-primary);
+        }
+
+        .mobile-nav-links a::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-            animation: rotateBackground 25s linear infinite;
-        }
-        @keyframes rotateBackground {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--ambar-primary);
+            transition: var(--transition);
         }
 
-        /* Card hover effects */
-        .service-card, .package-card {
-            transition: all 0.3s ease-in-out;
-            border-left: 6px solid transparent; /* Initial state for border */
-            background-color: #ffffff;
-        }
-        .service-card:hover, .package-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-left-color: #FF8C00; /* Highlight on hover */
-        }
-        .client-logo-container {
-            transition: all 0.3s ease-in-out;
-            background-color: #ffffff;
-            border-radius: 0.75rem; /* Rounded corners for client logos */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .client-logo-container:hover {
-            transform: scale(1.15);
-            filter: brightness(1.05); /* Slightly brighten on hover */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .mobile-nav-links a:hover::after {
+            width: 50px;
         }
 
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            .vapi-button {
+                margin-left: 10px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.85) 0%, rgba(26, 37, 48, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--ambar-primary);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--ambar-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(230, 126, 34, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(230, 126, 34, 0);
+            }
+        }
+
+        /* Responsive para Hero */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Sección de Servicios */
+        .services-section {
+            padding: 100px 5%;
+            background-color: var(--ambar-light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+
+        .section-subtitle {
+            color: var(--ambar-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            color: var(--ambar-dark);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--ambar-primary);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            color: #555;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 30px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            padding: 40px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(230, 126, 34, 0.1) 0%, rgba(230, 126, 34, 0.2) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--ambar-primary) 0%, #D35400 100%);
+            transform: scale(1.1);
+        }
+
+        .service-icon i {
+            font-size: 2.5rem;
+            color: var(--ambar-primary);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+
+        .service-title {
+            color: var(--ambar-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--ambar-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .service-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--ambar-dark);
+        }
+
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Decoración minimalista */
+        .shape-decoration {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 20px solid var(--ambar-primary);
+            top: 10%;
+            right: 5%;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--ambar-primary);
+            top: 70%;
+            left: 5%;
+            transform: rotate(45deg);
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            border: 15px solid var(--ambar-primary);
+            bottom: 10%;
+            right: 15%;
+            transform: rotate(30deg);
+        }
+
+        /* Responsive para servicios */
+        @media (max-width: 768px) {
+            .services-section {
+                padding: 80px 5%;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .section-description {
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Sección Nosotros */
+        .about-section {
+            padding: 100px 5%;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-subtitle {
+            color: var(--ambar-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .about-title {
+            color: var(--ambar-dark);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--ambar-primary);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .about-features {
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            background-color: rgba(230, 126, 34, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .feature-icon i {
+            color: var(--ambar-primary);
+            font-size: 1.2rem;
+        }
+
+        .feature-content h4 {
+            color: var(--ambar-dark);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-content p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .about-button {
+            display: inline-block;
+            background-color: var(--ambar-primary);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--ambar-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-button:hover {
+            background-color: transparent;
+            color: var(--ambar-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Sección Testimonios */
+        .testimonials-section {
+            padding: 100px 5%;
+            background-color: var(--ambar-light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '“';
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 6rem;
+            color: rgba(230, 126, 34, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 3px solid var(--ambar-light);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--ambar-dark);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--ambar-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Sección Blog */
+        .blog-section {
+            padding: 100px 5%;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--ambar-primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .blog-likes {
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-likes i {
+            color: var(--ambar-primary);
+            margin-right: 5px;
+        }
+
+        .blog-title {
+            color: var(--ambar-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--ambar-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover {
+            color: var(--ambar-dark);
+        }
+
+        .blog-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--ambar-dark) 0%, #1a2530 100%);
+            color: white;
+            padding: 80px 5% 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-column h3 {
+            color: var(--ambar-primary);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--ambar-primary);
+        }
+
+        .footer-about p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-icon {
+            background-color: var(--ambar-primary);
+            margin-right: 15px;
+        }
+
+        .footer-logo .logo-text {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .footer-logo .logo-text span {
+            color: var(--ambar-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--ambar-primary);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--ambar-primary);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--ambar-primary);
+            transform: translateY(-5px);
+        }
+
+        .newsletter-form {
+            margin-top: 20px;
+        }
+
+        .newsletter-form p {
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .input-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: #999;
+        }
+
+        .input-group button {
+            background-color: var(--ambar-primary);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .input-group button:hover {
+            background-color: #d35400;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--ambar-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal de Servicio */
+        .service-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #777;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--ambar-primary);
+        }
+
+        .modal-header {
+            margin-bottom: 30px;
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--ambar-primary) 0%, #D35400 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon i {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .modal-title {
+            color: var(--ambar-dark);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .modal-features {
+            background-color: var(--ambar-light-gray);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .modal-features h3 {
+            color: var(--ambar-dark);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-item h4 {
+            color: var(--ambar-primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-item h4 i {
+            margin-right: 10px;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-container {
+                gap: 30px;
+            }
+            
+            .about-title {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .footer-top {
+                gap: 30px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-title {
+                font-size: 2rem;
+            }
+            
+            .testimonials-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .input-group input {
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .input-group button {
+                border-radius: 50px;
+                padding: 15px;
+            }
         }
     </style>
 </head>
-<body class="text-gray-800">
-    <header class="bg-white shadow-xl py-4 px-6 md:px-12 fixed top-0 left-0 w-full z-50 rounded-b-2xl">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="#home" class="text-3xl font-extrabold text-amber-600 p-2 hover:text-amber-700 transition duration-300">
-                SOLUCIONES <span class="text-gray-800">ÁMBAR</span>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">A</div>
+                <div class="logo-text">SOLUCIONES <span>ÁMBAR</span></div>
             </a>
-            <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none p-2 rounded-md hover:bg-gray-100 transition duration-300">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
-                </svg>
-            </button>
-            <ul id="main-nav" class="hidden md:flex space-x-10">
-                <li><a href="#home" class="text-gray-700 hover:text-amber-600 font-semibold text-lg transition duration-300 p-2 rounded-md">Inicio</a></li>
-                <li><a href="#about" class="text-gray-700 hover:text-amber-600 font-semibold text-lg transition duration-300 p-2 rounded-md">Nosotros</a></li>
-                <li><a href="#services" class="text-gray-700 hover:text-amber-600 font-semibold text-lg transition duration-300 p-2 rounded-md">Servicios</a></li>
-                <li><a href="#packages" class="text-gray-700 hover:text-amber-600 font-semibold text-lg transition duration-300 p-2 rounded-md">Paquetes</a></li>
-                <li><a href="#clients" class="text-gray-700 hover:text-amber-600 font-semibold text-lg transition duration-300 p-2 rounded-md">Clientes</a></li>
-                <li><a href="#contact" class="text-gray-700 hover:text-amber-600 font-semibold text-lg transition duration-300 p-2 rounded-md">Contacto</a></li>
+        </div>
+
+        <!-- Menú de navegación desktop -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#paquetes">Paquetes</a></li>
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
-        <ul id="mobile-menu" class="md:hidden mt-4 space-y-3 bg-white rounded-md shadow-inner p-4 hidden">
-            <li><a href="#home" class="block text-gray-700 hover:text-amber-600 font-medium transition duration-300 p-2 rounded-md">Inicio</a></li>
-            <li><a href="#about" class="block text-gray-700 hover:text-amber-600 font-medium transition duration-300 p-2 rounded-md">Nosotros</a></li>
-                <li><a href="#services" class="block text-gray-700 hover:text-amber-600 font-medium transition duration-300 p-2 rounded-md">Servicios</a></li>
-                <li><a href="#packages" class="block text-gray-700 hover:text-amber-600 font-medium transition duration-300 p-2 rounded-md">Paquetes</a></li>
-                <li><a href="#clients" class="block text-gray-700 hover:text-amber-600 font-medium transition duration-300 p-2 rounded-md">Clientes</a></li>
-                <li><a href="#contact" class="block text-gray-700 hover:text-amber-600 font-medium transition duration-300 p-2 rounded-md">Contacto</a></li>
-            </ul>
-        </header>
 
-        <main class="pt-24">
-            <section id="home" class="relative text-white rounded-b-3xl shadow-2xl overflow-hidden">
-                <div class="container mx-auto text-center px-6 relative z-10">
-                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-down">
-                        SOLUCIONES <span class="text-white">ÁMBAR</span>
-                    </h1>
-                    <p class="text-xl md:text-3xl mb-10 opacity-90 animate-fade-in-up">
-                        Tu aliado estratégico en marketing, publicidad, diseño y optimización de ventas.
-                    </p>
-                    <a href="#services" class="inline-block bg-white text-amber-600 hover:bg-gray-100 px-10 py-4 rounded-full text-xl font-semibold shadow-lg transition duration-300 transform hover:scale-105 animate-pulse-subtle">
-                        Descubre Nuestros Servicios
-                    </a>
-                </div>
-            </section>
+        <!-- Menú hamburguesa -->
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-            <section id="about" class="bg-white rounded-xl mx-4 md:mx-8 lg:mx-16 mt-8">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-center text-amber-700 mb-16">¿Qué es Soluciones ÁMBAR?</h2>
-                    <div class="flex flex-col lg:flex-row items-center lg:space-x-16">
-                        <div class="lg:w-1/2 mb-12 lg:mb-0 animate-slide-in-left">
-                            <p class="text-lg leading-relaxed mb-6 text-gray-700">
-                                Soluciones ÁMBAR es una empresa de marketing, publicidad, diseño y optimización de ventas, conformada por un equipo multidisciplinario de profesionales con amplia experiencia a nivel empresarial. Estamos capacitados para dirigir proyectos relacionados con estas áreas administrativas y creativas.
-                            </p>
-                            <p class="text-lg leading-relaxed text-gray-700">
-                                Nuestro propósito es ser una solución integral que, mediante la creación de estrategias, entregue las mejores herramientas a los clientes para alcanzar satisfactoriamente sus logros y metas.
-                            </p>
-                        </div>
-                        <div class="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-10 animate-slide-in-right">
-                            <div class="bg-amber-50 p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition duration-300 border-b-6 border-amber-600">
-                                <img src="https://placehold.co/180x180/FDBA74/9A3412?text=Ana+Maria" alt="Ana María Barón - CEO" class="w-44 h-44 rounded-full mx-auto mb-6 object-cover border-4 border-amber-500 shadow-xl">
-                                <h3 class="text-2xl font-bold text-amber-800 mb-2">ANA MARÍA BARÓN</h3>
-                                <p class="text-lg font-medium text-gray-800">CEO</p>
-                                <p class="text-md text-gray-600 mt-3">Administradora de empresas, especializada en el área de finanzas.</p>
-                            </div>
-                            <div class="bg-amber-50 p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition duration-300 border-b-6 border-amber-600">
-                                <img src="https://placehold.co/180x180/FDBA74/9A3412?text=Remberto+P." alt="Remberto Peña - Director de Marketing" class="w-44 h-44 rounded-full mx-auto mb-6 object-cover border-4 border-amber-500 shadow-xl">
-                                <h3 class="text-2xl font-bold text-amber-800 mb-2">REMBERTO PEÑA</h3>
-                                <p class="text-lg font-medium text-gray-800">DIRECTOR DE MARKETING</p>
-                                <p class="text-md text-gray-600 mt-3">Comunicador social especialista en marketing internacional, con maestría en gerencia de marketing y amplia experiencia.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="services" class="bg-gray-100 rounded-xl mx-4 md:mx-8 lg:mx-16 mt-8">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-center text-amber-700 mb-16">Nuestros Servicios</h2>
-                    <p class="text-center text-xl max-w-4xl mx-auto mb-16 text-gray-700">
-                        Queremos brindar soporte y acompañamiento a su empresa, asesorando el área de marketing, para poder llevar su negocio a una gran expansión y recordación de marca.
-                    </p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Marketing Digital</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                Con amplio conocimiento en el mercado, seleccionamos los medios y estrategias adecuadas más sobresalientes, para alcanzar el público objetivo, generando un impacto en el consumidor.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Plan de Marketing</li>
-                                <li>Community Manager</li>
-                                <li>Posicionamiento de Mercado</li>
-                                <li>Emprendimiento de Negocios</li>
-                                <li>Fidelización de Clientes</li>
-                                <li>Marketing 360°</li>
-                            </ul>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Publicidad</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                La creatividad es una actitud y disposición permanente a crear cosas y encontrar alternativas que produzcan soluciones originales.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Diseño de Imagen Corporativa</li>
-                                <li>Asesoramiento Publicitario</li>
-                                <li>Campañas Publicitarias</li>
-                                <li>Campañas No Tradicionales</li>
-                                <li>Publicidad en Internet</li>
-                                <li>BTL</li>
-                            </ul>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Estudio de Diseño</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                La tecnología es nuestro aliado, fabricamos y hacemos realidad tus ideas, con toda nuestra creatividad para promover su empresa como debe ser.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Diseño de Imagen Corporativa</li>
-                                <li>Diseño Audiovisual</li>
-                                <li>Diseño Web</li>
-                                <li>Diseño 3D</li>
-                                <li>Animación 2D y 3D</li>
-                                <li>Merchandising y POP</li>
-                                <li>Línea Impresos</li>
-                                <li>Línea Gran Formato</li>
-                                <li>BTL</li>
-                            </ul>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Optimización de Ventas</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                Es importante conocer las fortalezas de su compañía para poder comprometer a los empleados conectándolos con la visión corporativa, para lograr así mejores resultados.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Innovación</li>
-                                <li>Inteligencia Colaborativa</li>
-                                <li>Mentoring Comercial</li>
-                                <li>Desarrollo de Competencias</li>
-                                <li>Planificación Conjunta de Marca</li>
-                                <li>Canales Competitivos</li>
-                                <li>Creación de Campañas de Lanzamiento de Productos</li>
-                            </ul>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Producción de Eventos</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                Eventos a nivel nacional e internacional. Contamos con infraestructura para montaje y producción de alta calidad.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Pantalla LED de 8x8</li>
-                                <li>Sonido Line Array</li>
-                                <li>Iluminación Profesional</li>
-                                <li>Efectos Especiales</li>
-                                <li>Cubrimiento 4K/360º</li>
-                            </ul>
-                            <p class="text-sm text-gray-500 mt-4 italic">
-                                Hemos realizado eventos a nivel nacional e internacional en países como Panamá, Ecuador, Argentina, México y Dubái.
-                            </p>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Modelado y Diseño 3D</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                Es una técnica de arte digital que nos permite crear representaciones tridimensionales de todo tipo de objetos, personas y entornos. Para ello se emplean distintas herramientas y softwares para ordenador.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Diseño 3D</li>
-                                <li>Modelado 3D</li>
-                            </ul>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Producción Audiovisual</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                Creamos imágenes que resaltan tus productos o servicios para utilizarlas en la Estrategia de Marketing.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Video y Fotografía Profesional</li>
-                                <li>Sonido Profesional</li>
-                                <li>Uso de Cámaras 4K y equipos Moza Air</li>
-                                <li>Drones Mavic Pro DJI Inspire 3</li>
-                                <li>Edición en 4K y uso Final Cut</li>
-                                <li>Animación Motion Graphic</li>
-                                <li>Masterización Musicalización con Licencias</li>
-                                <li>Contenido con Licencias</li>
-                            </ul>
-                        </div>
-
-                        <div class="service-card p-8 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                            <h3 class="text-2xl font-bold text-amber-700 mb-4">Marketing para Networkers</h3>
-                            <p class="text-gray-700 mb-4 text-md">
-                                Un modelo basado en la comercialización directa de productos o servicios entre el vendedor y el cliente, donde el cliente puede convertirse en vendedor, formando una red de distribución.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2 text-md">
-                                <li>Estrategias personalizadas para networkers</li>
-                                <li>Capacitación en ventas directas</li>
-                                <li>Herramientas para expansión de red</li>
-                                <li>Soporte en creación de contenido</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="packages" class="bg-white rounded-xl mx-4 md:mx-8 lg:mx-16 mt-8">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-center text-amber-700 mb-16">Nuestros Paquetes</h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <div class="package-card p-8 rounded-2xl shadow-lg border-l-6 border-orange-500">
-                            <h3 class="text-2xl font-bold text-orange-700 mb-4">Marketing Digital</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-md">
-                                <li>BÁSICO: Diseño de piezas gráficas, 12 publicaciones/mes, 15 instastories/mes, informe, monitorización, asesoría, gestión de curso.</li>
-                                <li>MEDIO: 16 publicaciones/mes, 23 instastories/mes, fotos/videos (1 vez/mes), asesoría, diseño para publicidad, concurso, informe, monitorización, publicidad paga IG/FB, Community Manager (L-V, 6h/día).</li>
-                                <li>AVANZADO: 20 publicaciones/mes (5 semanales), 30 instastories/mes (1 diaria), asesoría, informe, monitorización, cubrimiento de eventos, fotos/videos (2 veces/mes), concurso, publicidad paga IG/FB/Google Ads, Community Manager (L-V, 6h/día), diseño para publicidad.</li>
-                            </ul>
-                        </div>
-
-                        <div class="package-card p-8 rounded-2xl shadow-lg border-l-6 border-orange-500">
-                            <h3 class="text-2xl font-bold text-orange-700 mb-4">Diseño de Marca</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-md">
-                                <li>BÁSICO: Original editable, JPG alta resolución, PNG (logo sin fondo), tipografía usada.</li>
-                                <li>AVANZADO: Básico + Diseño de tarjetas de presentación, 2 imágenes de perfil para redes, portada de Facebook.</li>
-                                <li>PREMIUM: Avanzado + Diseño de membrete, diseño material POP, Manual de Marca.</li>
-                            </ul>
-                        </div>
-
-                        <div class="package-card p-8 rounded-2xl shadow-lg border-l-6 border-orange-500">
-                            <h3 class="text-2xl font-bold text-orange-700 mb-4">Producción Audiovisual</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-md">
-                                <li>FOTOGRAFÍA PUBLICITARIA: Creación de imágenes para productos/servicios.</li>
-                                <li>PRODUCCIÓN AUDIOVISUAL: Creación de guión, fotografía, filmación de video, selección y edición, renderizado. (Recursos técnicos 4K de última generación).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="clients" class="bg-gray-100 rounded-xl mx-4 md:mx-8 lg:mx-16 mt-8">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-center text-amber-700 mb-16">Nuestros Clientes</h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 items-center justify-center">
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Organizacion+Clinica" alt="Logo Cliente Organización Clínica" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Petrosal" alt="Logo Cliente Petrosal" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Canacovamin" alt="Logo Cliente Canacovamin" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Texaco" alt="Logo Cliente Texaco" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Maxout" alt="Logo Cliente Maxout" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=SENA" alt="Logo Cliente SENA" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Claro" alt="Logo Cliente Claro" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Capital+Green" alt="Logo Cliente Capital Green" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Toyota" alt="Logo Cliente Toyota" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Mimebest" alt="Logo Cliente Mimebest" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=WOW" alt="Logo Cliente WOW" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                        <div class="client-logo-container p-4 flex items-center justify-center h-28">
-                            <img src="https://placehold.co/180x90/FFD700/8B4513?text=Colombiamoda" alt="Logo Cliente Colombiamoda" class="w-full h-auto object-contain max-h-full">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="bg-white rounded-xl mx-4 md:mx-8 lg:mx-16 mt-8">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-amber-700 mb-16">Contáctanos</h2>
-                    <p class="text-xl text-gray-700 mb-12 max-w-2xl mx-auto">
-                        Estamos listos para ayudarte a llevar tu negocio al siguiente nivel. ¡Contáctanos hoy mismo!
-                    </p>
-                    <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-16 mb-16">
-                        <div class="text-center">
-                            <p class="text-2xl font-semibold text-gray-800 mb-2">Teléfono:</p>
-                            <a href="tel:+573113248648" class="text-amber-600 hover:underline text-xl transition duration-300">+57 311 324 8648</a>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-semibold text-gray-800 mb-2">Instagram:</p>
-                            <a href="https://www.instagram.com/solucionesambar.baq/" target="_blank" rel="noopener noreferrer" class="text-amber-600 hover:underline text-xl transition duration-300">@solucionesambar.baq</a>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-semibold text-gray-800 mb-2">Ubicación:</p>
-                            <p class="text-xl">Barranquilla - Colombia</p>
-                        </div>
-                    </div>
-
-                    <div class="max-w-xl mx-auto bg-gray-50 p-10 rounded-2xl shadow-lg border-t-6 border-amber-500">
-                        <h3 class="text-3xl font-bold text-amber-700 mb-8">Envíanos un Mensaje</h3>
-                        <form class="space-y-6">
-                            <div>
-                                <input type="text" placeholder="Tu Nombre" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 text-lg" required>
-                            </div>
-                            <div>
-                                <input type="email" placeholder="Tu Correo Electrónico" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 text-lg" required>
-                            </div>
-                            <div>
-                                <textarea placeholder="Tu Mensaje" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 text-lg" required></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-xl hover:bg-amber-700 transition duration-300 transform hover:scale-105 shadow-lg">
-                                Enviar Mensaje
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <div id="ai-assistant-integration-point" style="display: none;">
-                </div>
-        </main>
-
-        <footer class="bg-gray-900 text-white py-10 mt-12 rounded-t-2xl shadow-inner">
-            <div class="container mx-auto text-center px-6">
-                <p class="text-gray-400 text-lg">&copy; 2024 Soluciones ÁMBAR. Todos los derechos reservados.</p>
-                <div class="flex justify-center space-x-6 mt-6">
-                    <a href="https://www.instagram.com/solucionesambar.baq/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.175.074 1.347.203 2.398.885 3.232 1.719.835.835 1.516 1.886 1.719 3.232.061.391.074.745.074 3.175s-.013 2.784-.074 3.175c-.203 1.347-.885 2.398-1.719 3.232-.835.835-1.886 1.516-3.232 1.719-.391.061-.745.074-3.175.074s-2.784-.013-3.175-.074c-1.347-.203-2.398-.885-3.232-1.719-.835-.835-1.516-1.886-1.719-3.232-.061-.391-.074-.745-.074-3.175s.013-2.784.074-3.175c.203-1.347.885-2.398 1.719-3.232.835-.835 1.886-1.516 3.232-1.719.391.061.745.074 3.175-.074ZM12 0C8.74 0 8.333.014 7.053.072 5.775.132 4.72 1.05 3.738 2.032 2.756 3.014 1.839 4.07 1.78 5.349c-.058 1.28-.072 1.687-.072 4.954s.014 3.674.072 4.954c.059 1.279.976 2.333 1.958 3.315.982.982 2.033 1.899 3.315 1.958 1.28.058 1.687.072 4.954.072s3.674-.014 4.954-.072c1.279-.059 2.333-.976 3.315-1.958.982-.982 1.899-2.033 1.958-3.315.058-1.28.072-1.687.072-4.954s-.014-3.674-.072-4.954c-.059-1.279-.976-2.333-1.958-3.315C21.014 1.839 19.96 1.05 18.681 1.05c-1.28-.058-1.687-.072-4.954-.072H12Zm0 6.865a5.135 5.135 0 1 1 0 10.27 5.135 5.135 0 0 1 0-10.27Zm0 1.802a3.333 3.333 0 1 0 0 6.666 3.333 3.333 0 0 0 0-6.666Zm5.338-3.205a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </footer>
-
-        <script>
-            document.getElementById('mobile-menu-button').addEventListener('click', function() {
-                const mobileMenu = document.getElementById('mobile-menu');
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when a link is clicked
-            document.querySelectorAll('#mobile-menu a').forEach(item => {
-                item.addEventListener('click', () => {
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                });
-            });
-        </script>
-
-    <div onclick="vapiInstance?.start()"
-         class="fixed bottom-6 right-6 z-50 p-4 rounded-xl border border-amber-400 
-                bg-amber-50 bg-opacity-80 backdrop-blur-sm 
-                shadow-xl hover:bg-opacity-100 transition cursor-pointer 
-                flex flex-col items-center justify-center space-y-1 md:space-y-2">
-        <p class="text-amber-800 text-md md:text-lg font-medium text-center leading-tight">¿Necesitas apoyo?</p>
-        <p class="text-amber-900 text-lg md:text-xl font-bold flex items-center space-x-1 md:space-x-2 leading-tight">
-            <span>Iniciar conversación</span>
-            <span>🎙️</span>
-        </p>
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#paquetes">Paquetes</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
     </div>
 
+    <!-- Overlay para menú móvil -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Modal de Servicio -->
+    <div class="service-modal" id="serviceModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-description" id="modalDescription"></p>
+            </div>
+            <div class="modal-features">
+                <h3>Nuestros Servicios Incluyen</h3>
+                <div class="features-grid" id="featuresGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Impulsa tu negocio con soluciones integrales</h1>
+            <p>Somos tu aliado estratégico en marketing, publicidad, diseño y optimización de ventas. Transformamos tus ideas en resultados tangibles.</p>
+            <a href="#contacto" class="cta-button" style="margin-top: 10px; display: inline-block;">Contáctanos hoy</a>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="services-section" id="servicios">
+        <!-- Decoraciones minimalistas -->
+        <div class="shape-decoration shape-1"></div>
+        <div class="shape-decoration shape-2"></div>
+        <div class="shape-decoration shape-3"></div>
+        
+        <div class="section-header">
+            <p class="section-subtitle">Nuestra Experiencia</p>
+            <h2 class="section-title">Servicios Especializados</h2>
+            <p class="section-description">Ofrecemos soluciones integrales adaptadas a las necesidades de tu negocio. Cada servicio está diseñado para impulsar tu crecimiento y maximizar tu impacto en el mercado.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Servicio 1: Marketing Digital -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="service-title">Marketing Digital</h3>
+                <p class="service-description">Estrategias personalizadas para alcanzar a tu público objetivo y generar impacto en el consumidor mediante canales digitales.</p>
+                <a href="#" class="service-link" data-service="marketing-digital">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 2: Publicidad -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3 class="service-title">Publicidad</h3>
+                <p class="service-description">Campañas creativas que capturan la atención de tu audiencia y fortalecen la presencia de tu marca.</p>
+                <a href="#" class="service-link" data-service="publicidad">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 3: Estudio de Diseño -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="service-title">Estudio de Diseño</h3>
+                <p class="service-description">Soluciones visuales innovadoras que fortalecen tu identidad de marca y comunicación corporativa.</p>
+                <a href="#" class="service-link" data-service="diseno">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 4: Optimización de Ventas -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="service-title">Optimización de Ventas</h3>
+                <p class="service-description">Potenciamos tus fortalezas para conectar a tus empleados con la visión corporativa y mejorar resultados.</p>
+                <a href="#" class="service-link" data-service="ventas">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 5: Producción de Eventos -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="service-title">Producción de Eventos</h3>
+                <p class="service-description">Eventos memorables con infraestructura de alta calidad para experiencias únicas a nivel nacional e internacional.</p>
+                <a href="#" class="service-link" data-service="eventos">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 6: Modelado y Diseño 3D -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h3 class="service-title">Modelado y Diseño 3D</h3>
+                <p class="service-description">Creación de representaciones tridimensionales de alta calidad para todo tipo de objetos y entornos.</p>
+                <a href="#" class="service-link" data-service="modelado-3d">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 7: Producción Audiovisual -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3 class="service-title">Producción Audiovisual</h3>
+                <p class="service-description">Contenido visual profesional que resalta tus productos o servicios con tecnología de última generación.</p>
+                <a href="#" class="service-link" data-service="audiovisual">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Servicio 8: Marketing para Networkers -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="service-title">Marketing para Networkers</h3>
+                <p class="service-description">Estrategias personalizadas y capacitación para expandir tu red de distribución y ventas directas.</p>
+                <a href="#" class="service-link" data-service="networkers">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section class="about-section" id="nosotros">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Equipo de Soluciones ÁMBAR">
+            </div>
+            <div class="about-content">
+                <p class="about-subtitle">Nuestra Historia</p>
+                <h2 class="about-title">Más de 15 años transformando negocios</h2>
+                <p class="about-text">Soluciones ÁMBAR nació con la visión de ser un aliado estratégico para empresas que buscan crecer y destacar en el mercado. Hoy, con más de 200 proyectos exitosos, seguimos comprometidos con la excelencia y la innovación.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Innovación Constante</h4>
+                            <p>Implementamos las últimas tendencias y tecnologías para mantenerte a la vanguardia.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Enfoque Personalizado</h4>
+                            <p>Cada proyecto recibe atención exclusiva adaptada a sus necesidades específicas.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Resultados Tangibles</h4>
+                            <p>Nuestras estrategias están diseñadas para maximizar tu retorno de inversión.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contacto" class="about-button">Contáctanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Paquetes -->
+    <section class="services-section" id="paquetes">
+        <div class="section-header">
+            <p class="section-subtitle">Nuestras Soluciones</p>
+            <h2 class="section-title">Paquetes de Servicios</h2>
+            <p class="section-description">Ofrecemos diferentes niveles de servicio para adaptarnos a las necesidades específicas de tu negocio.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon" style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(44, 62, 80, 0.2) 100%);">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="service-title">Marketing Digital Básico</h3>
+                <p class="service-description">Diseño de piezas gráficas, 12 publicaciones/mes, 15 instastories/mes, informe, monitorización, asesoría, gestión de curso.</p>
+                <a href="#contacto" class="service-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="service-title">Marketing Digital Medio</h3>
+                <p class="service-description">16 publicaciones/mes, 23 instastories/mes, fotos/videos (1 vez/mes), asesoría, diseño para publicidad, concurso, informe, monitorización, publicidad paga IG/FB, Community Manager (L-V, 6h/día).</p>
+                <a href="#contacto" class="service-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon" style="background: linear-gradient(135deg, rgba(230, 126, 34, 0.1) 0%, rgba(230, 126, 34, 0.2) 100%);">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="service-title">Marketing Digital Avanzado</h3>
+                <p class="service-description">20 publicaciones/mes (5 semanales), 30 instastories/mes (1 diaria), asesoría, informe, monitorización, cubrimiento de eventos, fotos/videos (2 veces/mes), concurso, publicidad paga IG/FB/Google Ads, Community Manager (L-V, 6h/día), diseño para publicidad.</p>
+                <a href="#contacto" class="service-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section class="testimonials-section" id="clientes">
+        <div class="testimonials-header">
+            <p class="section-subtitle">Lo que dicen nuestros clientes</p>
+            <h2 class="section-title">Testimonios</h2>
+            <p class="section-description">La satisfacción de nuestros clientes es nuestra mayor motivación. Estas son algunas de sus experiencias trabajando con nosotros.</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <!-- Testimonio 1 -->
+            <div class="testimonial-card">
+                <p class="testimonial-content">Trabajar con Soluciones ÁMBAR fue un punto de inflexión para nuestro negocio. Su estrategia de marketing digital aumentó nuestras ventas en un 150% en solo 6 meses. ¡Increíble!</p>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Carlos Mendoza">
+                    </div>
+                    <div class="author-info">
+                        <h4>Carlos Mendoza</h4>
+                        <p>CEO, Texaco Colombia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonio 2 -->
+            <div class="testimonial-card">
+                <p class="testimonial-content">El rediseño de nuestra identidad corporativa superó todas nuestras expectativas. El equipo de diseño capturó perfectamente la esencia de nuestra marca y la llevó a otro nivel.</p>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="María López">
+                    </div>
+                    <div class="author-info">
+                        <h4>María López</h4>
+                        <p>Directora de Marketing, Clínica Organización</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonio 3 -->
+            <div class="testimonial-card">
+                <p class="testimonial-content">La producción de nuestro evento anual en Dubái fue impecable. Desde la planificación hasta la ejecución, demostraron profesionalismo y atención al detalle en cada etapa.</p>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Roberto Fernández">
+                    </div>
+                    <div class="author-info">
+                        <h4>Roberto Fernández</h4>
+                        <p>Director Regional, Toyota</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Blog -->
+    <section class="blog-section" id="blog">
+        <div class="section-header">
+            <p class="section-subtitle">Nuestro Blog</p>
+            <h2 class="section-title">Artículos Recientes</h2>
+            <p class="section-description">Mantente actualizado con las últimas tendencias, consejos y estrategias en marketing y diseño.</p>
+        </div>
+        
+        <div class="blog-grid">
+            <!-- Artículo 1 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Marketing Digital">
+                    <div class="blog-category">Marketing</div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Autor">
+                            <span>Remberto Peña</span>
+                        </div>
+                        <div class="blog-likes">
+                            <i class="fas fa-heart"></i>
+                            <span>243</span>
+                        </div>
+                    </div>
+                    <h3 class="blog-title">5 Estrategias de Marketing Digital para Impulsar tu Negocio en 2023</h3>
+                    <p class="blog-excerpt">Descubre las tendencias clave que están transformando el panorama del marketing digital y cómo aplicarlas para obtener resultados tangibles.</p>
+                    <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Artículo 2 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80" alt="Diseño Web">
+                    <div class="blog-category">Diseño</div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1664&q=80" alt="Autor">
+                            <span>Laura Torres</span>
+                        </div>
+                        <div class="blog-likes">
+                            <i class="fas fa-heart"></i>
+                            <span>187</span>
+                        </div>
+                    </div>
+                    <h3 class="blog-title">Diseño Web Responsive: Por qué es Crucial para tu Negocio</h3>
+                    <p class="blog-excerpt">En la era móvil, una web responsive no es una opción, es una necesidad. Aprende cómo optimizar tu sitio para todos los dispositivos.</p>
+                    <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Artículo 3 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Redes Sociales">
+                    <div class="blog-category">Social Media</div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Autor">
+                            <span>Carlos Ramírez</span>
+                        </div>
+                        <div class="blog-likes">
+                            <i class="fas fa-heart"></i>
+                            <span>321</span>
+                        </div>
+                    </div>
+                    <h3 class="blog-title">Cómo Crear Contenido Viral para tus Redes Sociales</h3>
+                    <p class="blog-excerpt">Descubre las técnicas que utilizan las marcas líderes para crear contenido que genera engagement y se comparte masivamente.</p>
+                    <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="footer-top">
+            <!-- Columna 1: Logo y descripción -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="logo-icon">A</div>
+                    <div class="logo-text">SOLUCIONES <span>ÁMBAR</span></div>
+                </div>
+                <div class="footer-about">
+                    <p>Tu aliado estratégico en marketing, publicidad, diseño y optimización de ventas. Transformamos tus ideas en resultados tangibles.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Columna 2: Enlaces rápidos -->
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Política de Privacidad</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Términos y Condiciones</a></li>
+                    <li><a href="#blog"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Soporte Técnico</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna 3: Contacto -->
+            <div class="footer-column">
+                <h3>Contáctanos</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Barranquilla, Colombia</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +57 311 324 8648</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> info@solucionesambar.com</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Lunes-Viernes: 9am - 6pm</a></li>
+                </ul>
+            </div>
+            
+            <!-- Columna 4: Newsletter -->
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <div class="newsletter-form">
+                    <p>Suscríbete para recibir las últimas noticias, ofertas especiales y actualizaciones directamente en tu correo.</p>
+                    <div class="input-group">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit">Suscribirse</button>
+                    </div>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">Respetamos tu privacidad. Nunca compartiremos tu información.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Soluciones ÁMBAR. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: var(--ambar-primary);"></i> en Colombia</p>
+        </div>
+    </footer>
 
     <script>
-  var vapiInstance = null;
-  const assistant = "e045705a-eebd-40eb-b18c-fc14925d4469"; // NUEVO ASSISTANT ID
-  const apiKey = "c1aaa8cc-79ea-4b53-bd9f-a29bdb956e27";    // NUEVA PUBLIC API KEY
+        // Variables globales para Vapi
+        var vapiInstance = null;
+        const assistant = "e045705a-eebd-40eb-b18c-fc14925d4469";
+        const apiKey = "c1aaa8cc-79ea-4b53-bd9f-a29bdb956e27";    
+        const buttonConfig = { showVapiButton: false };
 
-  const buttonConfig = {
-      showVapiButton: false 
-  };
+        // Datos de servicios
+        const serviciosData = {
+            "marketing-digital": {
+                title: "Marketing Digital",
+                icon: '<i class="fas fa-chart-line"></i>',
+                description: "Con amplio conocimiento en el mercado, seleccionamos los medios y estrategias adecuadas más sobresalientes, para alcanzar el público objetivo, generando un impacto en el consumidor.",
+                features: [
+                    {title: "Plan de Marketing", description: "Desarrollo de estrategias integrales para posicionar tu marca"},
+                    {title: "Community Manager", description: "Gestión profesional de tus redes sociales y comunidad online"},
+                    {title: "Posicionamiento de Mercado", description: "Estrategias para mejorar tu visibilidad y reconocimiento"},
+                    {title: "Emprendimiento de Negocios", description: "Apoyo en el lanzamiento y crecimiento de nuevos negocios"},
+                    {title: "Fidelización de Clientes", description: "Programas para retener y fidelizar a tu base de clientes"},
+                    {title: "Marketing 360°", description: "Estrategias integradas en todos los canales de comunicación"}
+                ]
+            },
+            "publicidad": {
+                title: "Publicidad",
+                icon: '<i class="fas fa-bullhorn"></i>',
+                description: "La creatividad es una actitud y disposición permanente a crear cosas y encontrar alternativas que produzcan soluciones originales.",
+                features: [
+                    {title: "Diseño de Imagen Corporativa", description: "Creación de identidad visual para tu empresa"},
+                    {title: "Asesoramiento Publicitario", description: "Consultoría especializada en estrategias publicitarias"},
+                    {title: "Campañas Publicitarias", description: "Desarrollo e implementación de campañas efectivas"},
+                    {title: "Campañas No Tradicionales", description: "Soluciones innovadoras fuera de los medios convencionales"},
+                    {title: "Publicidad en Internet", description: "Estrategias digitales para llegar a tu audiencia online"},
+                    {title: "BTL", description: "Actividades Below The Line para impacto directo con el consumidor"}
+                ]
+            },
+            "diseno": {
+                title: "Estudio de Diseño",
+                icon: '<i class="fas fa-paint-brush"></i>',
+                description: "La tecnología es nuestro aliado, fabricamos y hacemos realidad tus ideas, con toda nuestra creatividad para promover su empresa como debe ser.",
+                features: [
+                    {title: "Diseño de Imagen Corporativa", description: "Desarrollo de identidad visual coherente y profesional"},
+                    {title: "Diseño Audiovisual", description: "Creación de contenido multimedia para tus campañas"},
+                    {title: "Diseño Web", description: "Desarrollo de sitios web atractivos y funcionales"},
+                    {title: "Diseño 3D", description: "Modelado y renderizado de objetos y espacios en tres dimensiones"},
+                    {title: "Animación 2D y 3D", description: "Creación de animaciones para videos y presentaciones"},
+                    {title: "Merchandising y POP", description: "Diseño de material promocional y punto de venta"},
+                    {title: "Línea Impresos", description: "Diseño de material impreso para todo tipo de necesidades"},
+                    {title: "Línea Gran Formato", description: "Soluciones de gran tamaño para vallas publicitarias y eventos"},
+                    {title: "BTL", description: "Material promocional para actividades Below The Line"}
+                ]
+            },
+            "ventas": {
+                title: "Optimización de Ventas",
+                icon: '<i class="fas fa-trophy"></i>',
+                description: "Es importante conocer las fortalezas de su compañía para poder comprometer a los empleados conectándolos con la visión corporativa, para lograr así mejores resultados.",
+                features: [
+                    {title: "Innovación", description: "Implementación de nuevas técnicas y estrategias de ventas"},
+                    {title: "Inteligencia Colaborativa", description: "Fomento del trabajo en equipo para mejorar resultados"},
+                    {title: "Mentoring Comercial", description: "Entrenamiento personalizado para tu equipo de ventas"},
+                    {title: "Desarrollo de Competencias", description: "Programas para mejorar las habilidades de tu personal"},
+                    {title: "Planificación Conjunta de Marca", description: "Estrategias alineadas con la identidad de tu marca"},
+                    {title: "Canales Competitivos", description: "Optimización de tus canales de distribución y venta"},
+                    {title: "Creación de Campañas de Lanzamiento de Productos", description: "Estrategias para introducir nuevos productos al mercado"}
+                ]
+            },
+            "eventos": {
+                title: "Producción de Eventos",
+                icon: '<i class="fas fa-calendar-alt"></i>',
+                description: "Eventos a nivel nacional e internacional. Contamos con infraestructura para montaje y producción de alta calidad.",
+                features: [
+                    {title: "Pantalla LED de 8x8", description: "Tecnología de visualización para impactar a tu audiencia"},
+                    {title: "Sonido Line Array", description: "Sistemas de audio profesional para eventos de cualquier tamaño"},
+                    {title: "Iluminación Profesional", description: "Equipos de iluminación para crear ambientes impactantes"},
+                    {title: "Efectos Especiales", description: "Soluciones para hacer tus eventos inolvidables"},
+                    {title: "Cubrimiento 4K/360º", description: "Grabación profesional en alta definición y formato inmersivo"}
+                ]
+            },
+            "modelado-3d": {
+                title: "Modelado y Diseño 3D",
+                icon: '<i class="fas fa-cube"></i>',
+                description: "Es una técnica de arte digital que nos permite crear representaciones tridimensionales de todo tipo de objetos, personas y entornos. Para ello se emplean distintas herramientas y softwares para ordenador.",
+                features: [
+                    {title: "Diseño 3D", description: "Creación de modelos tridimensionales para diversos usos"},
+                    {title: "Modelado 3D", description: "Desarrollo de representaciones detalladas de objetos y espacios"}
+                ]
+            },
+            "audiovisual": {
+                title: "Producción Audiovisual",
+                icon: '<i class="fas fa-video"></i>',
+                description: "Creamos imágenes que resaltan tus productos o servicios para utilizarlas en la Estrategia de Marketing.",
+                features: [
+                    {title: "Video y Fotografía Profesional", description: "Producción de contenido visual de alta calidad"},
+                    {title: "Sonido Profesional", description: "Grabación y edición de audio para tus proyectos"},
+                    {title: "Uso de Cámaras 4K y equipos Moza Air", description: "Tecnología de punta para resultados excepcionales"},
+                    {title: "Drones Mavic Pro DJI Inspire 3", description: "Tomas aéreas para perspectivas únicas"},
+                    {title: "Edición en 4K y uso Final Cut", description: "Postproducción profesional en alta resolución"},
+                    {title: "Animación Motion Graphic", description: "Creación de animaciones para explicar conceptos complejos"},
+                    {title: "Masterización Musicalización con Licencias", description: "Edición de sonido con música legalmente autorizada"},
+                    {title: "Contenido con Licencias", description: "Producción de material con todos los derechos resueltos"}
+                ]
+            },
+            "networkers": {
+                title: "Marketing para Networkers",
+                icon: '<i class="fas fa-users"></i>',
+                description: "Un modelo basado en la comercialización directa de productos o servicios entre el vendedor y el cliente, donde el cliente puede convertirse en vendedor, formando una red de distribución.",
+                features: [
+                    {title: "Estrategias personalizadas para networkers", description: "Soluciones adaptadas a las necesidades de tu red"},
+                    {title: "Capacitación en ventas directas", description: "Formación para mejorar las habilidades de tu equipo"},
+                    {title: "Herramientas para expansión de red", description: "Recursos para crecer y fortalecer tu organización"},
+                    {title: "Soporte en creación de contenido", description: "Asistencia en el desarrollo de material promocional"}
+                ]
+            }
+        };
 
-  (function (d, t) {
-    var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-    g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-    g.defer = true;
-    g.async = true;
-    s.parentNode.insertBefore(g, s);
+        // Elementos DOM
+        const header = document.getElementById('header');
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        const vapiButton = document.getElementById('vapi-button');
+        const serviceModal = document.getElementById('serviceModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalIcon = document.getElementById('modalIcon');
+        const featuresGrid = document.getElementById('featuresGrid');
 
-    g.onload = function () {
-      vapiInstance = window.vapiSDK.run({
-        apiKey: apiKey,
-        assistant: assistant,
-        config: buttonConfig
-      });
-    };
-  })(document, "script");
-</script>
+        // Scroll para efecto en header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Actualizar enlace activo
+            updateActiveNavLink();
+        });
 
+        // Toggle menú móvil
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
 
+        // Cerrar menú al hacer clic en overlay
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+
+        // Actualizar enlace activo
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Funcionalidad de "like" para artículos del blog
+        const likeButtons = document.querySelectorAll('.blog-likes');
+        likeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const likeCount = this.querySelector('span');
+                let count = parseInt(likeCount.textContent);
+                
+                if (!this.classList.contains('liked')) {
+                    count++;
+                    this.classList.add('liked');
+                    this.querySelector('i').style.color = '#e74c3c';
+                } else {
+                    count--;
+                    this.classList.remove('liked');
+                    this.querySelector('i').style.color = 'var(--ambar-primary)';
+                }
+                
+                likeCount.textContent = count;
+            });
+        });
+
+        // Abrir modal de servicio
+        document.querySelectorAll('.service-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const serviceId = this.getAttribute('data-service');
+                const serviceData = serviciosData[serviceId];
+                
+                if (serviceData) {
+                    modalTitle.textContent = serviceData.title;
+                    modalDescription.textContent = serviceData.description;
+                    modalIcon.innerHTML = serviceData.icon;
+                    
+                    // Limpiar y agregar características
+                    featuresGrid.innerHTML = '';
+                    serviceData.features.forEach(feature => {
+                        featuresGrid.innerHTML += `
+                            <div class="feature-item">
+                                <h4><i class="fas fa-check-circle"></i> ${feature.title}</h4>
+                                <p>${feature.description}</p>
+                            </div>
+                        `;
+                    });
+                    
+                    serviceModal.classList.add('active');
+                }
+            });
+        });
+
+        // Cerrar modal
+        closeModal.addEventListener('click', () => {
+            serviceModal.classList.remove('active');
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', (e) => {
+            if (e.target === serviceModal) {
+                serviceModal.classList.remove('active');
+            }
+        });
+
+        // Cargar SDK de Vapi
+        (function (d, t) {
+            var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+            g.defer = true;
+            g.async = true;
+            s.parentNode.insertBefore(g, s);
+
+            g.onload = function () {
+                vapiInstance = window.vapiSDK.run({
+                    apiKey: apiKey,
+                    assistant: assistant,
+                    config: {
+                        position: 'bottom-right'
+                    }
+                });
+            };
+        })(document, "script");
+    </script>
 </body>
 </html>
